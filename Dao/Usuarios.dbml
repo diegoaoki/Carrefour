@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_a8f702_carrefour" Class="UsuariosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SQL8001.site4now.net;Initial Catalog=db_a8f702_carrefour;Persist Security Info=True;User ID=db_a8f702_carrefour_admin" SettingsObjectName="Dao.Properties.Settings" SettingsPropertyName="db_a8f702_carrefourConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.MENU" Member="MENUs">
+    <Type Name="MENU">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOME_REPORT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CONTROLLER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="[PROCEDURE]" Member="PROCEDURE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="INDICA_INATIVO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ORDEM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

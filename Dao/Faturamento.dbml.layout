@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Faturamento">
+  <DataContextMoniker Name="/FaturamentoDataContext" />
+  <nestedChildShapes>
+    <classShape Id="592bf332-9dfb-4fe5-ba4e-d5e69dc62bb6" isExpanded="false" absoluteBounds="1.25, 0.875, 2, 0.45">
+      <DataClassMoniker Name="/FaturamentoDataContext/FATURAMENTO_DIARIO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2658d96c-aafa-4faa-a02f-da9915c67a41" absoluteBounds="1.2650000000000006, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f1321c12-4984-4dee-b7d4-4e4162629bad" isExpanded="false" absoluteBounds="1.25, 1.5, 2, 0.45">
+      <DataClassMoniker Name="/FaturamentoDataContext/FATURAMENTO_MENSAL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b00aa704-e765-43f3-851b-3d6ab03ad67b" absoluteBounds="1.2650000000000006, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

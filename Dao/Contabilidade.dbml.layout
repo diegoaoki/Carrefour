@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Contabilidade">
+  <DataContextMoniker Name="/ContabilidadeDataContext" />
+  <nestedChildShapes>
+    <classShape Id="19dd74b6-cdee-41d7-aa6a-00b8b3a3d987" isExpanded="false" absoluteBounds="0.75, 1.125, 2, 0.45">
+      <DataClassMoniker Name="/ContabilidadeDataContext/CTB_VISAO_CONTABIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="09f513fa-5ff5-4d7c-b2e4-11d4070cbe48" absoluteBounds="0.76500000000000057, 1.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="66b2f7bf-9f86-471a-9fd8-4007e2084cca" isExpanded="false" absoluteBounds="0.75, 1.75, 2, 0.45">
+      <DataClassMoniker Name="/ContabilidadeDataContext/CTB_LANCAMENTO_ITEM" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e871464d-4cb8-4a82-b152-1bbb720b3019" absoluteBounds="0.76500000000000057, 2.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="04eac40e-8e03-46f4-900d-191cb891ccd8" isExpanded="false" absoluteBounds="0.75, 2.375, 2, 0.45">
+      <DataClassMoniker Name="/ContabilidadeDataContext/CTB_BALANCETE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="18a25247-00fe-4ac0-8e9d-d9aa812ee0e6" absoluteBounds="0.76500000000000057, 2.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

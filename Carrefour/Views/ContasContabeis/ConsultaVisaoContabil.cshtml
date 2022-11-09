@@ -1,0 +1,82 @@
+﻿@model Carrefour.Models.VisaoContabilModels
+
+@{
+    ViewBag.Title = "ConsultaVisaoContabil";
+}
+
+<h2>Consulta Visao Contabil</h2>
+
+
+@if (Request.IsAuthenticated)
+{
+
+
+
+    <div id="loading">
+        <center><img src="~/images/PadraoSistema/aguarde.gif" /></center>
+    </div>
+
+
+    <div id="geral">
+
+
+        @(Html.DevExtreme().DataGrid<Carrefour.Models.VisaoContabilItem>()
+                            .ID("gridVisaoContabil")
+                            .Export(e => e.Enabled(true))
+
+                             .HeaderFilter(headerFilter => headerFilter.Visible(true))
+
+
+                                 .Grouping(grouping => grouping.AutoExpandAll(false))
+                                  .GroupPanel(groupPanel => groupPanel.Visible(true))
+
+                             .FilterRow(filterRow => filterRow
+                                            .Visible(true)
+                                            .ApplyFilter(GridApplyFilterMode.Auto)
+                                        )
+
+
+                                .SearchPanel(searchPanel => searchPanel
+                                        .Visible(true)
+                                        .Width(240)
+                                        .Placeholder("Procurar...")
+                                    )
+                            .Columns(columns => {
+
+                                
+                                columns.AddFor(m => m.contaContabil).Format("R$ #,##0.##");
+                                columns.AddFor(m => m.descricao).Format("###.##%");
+
+
+                                columns.AddFor(m => m.nivel1).Caption("Nível 1").GroupIndex(0);
+                                columns.AddFor(m => m.nivel2).Caption("Nível 2");
+                                columns.AddFor(m => m.nivel3).Caption("Nível 3");
+                                columns.AddFor(m => m.nivel4).Caption("Nível 4");
+                                columns.AddFor(m => m.nivel5).Caption("Nível 5");
+
+                            })
+
+                            .DataSource(Model.listVisaoItem)
+                        )
+
+    </div>
+
+}
+
+<script>
+
+    $(window).on('beforeunload', function () {
+        $("#loading").show();
+        $("#geral").hide();
+    });
+
+
+    $(document).ready(function () {
+        $("#loading").hide();
+        $("#geral").show();
+    });
+
+
+
+
+</script>

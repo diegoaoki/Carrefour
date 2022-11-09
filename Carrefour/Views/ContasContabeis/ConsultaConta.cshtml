@@ -1,0 +1,68 @@
+﻿@model Carrefour.Models.ContaContabilModels
+@{
+    ViewBag.Title = "ConsultaConta";
+}
+
+<h2>Consulta Conta Contabil</h2>
+@if (Request.IsAuthenticated)
+{
+
+
+
+    <div id="loading">
+        <center><img src="~/images/PadraoSistema/aguarde.gif" /></center>
+    </div>
+
+
+    <div id="geral">
+
+
+        @(Html.DevExtreme().DataGrid<Carrefour.Models.ContaContabilItem>()
+                            .ID("gridContaContabil")
+                            .Export(e => e.Enabled(true))
+
+                             .HeaderFilter(headerFilter => headerFilter.Visible(true))
+
+                             .FilterRow(filterRow => filterRow
+                                            .Visible(true)
+                                            .ApplyFilter(GridApplyFilterMode.Auto)
+                                        )
+
+
+                                .SearchPanel(searchPanel => searchPanel
+                                        .Visible(true)
+                                        .Width(240)
+                                        .Placeholder("Procurar...")
+                                    )
+                            .Columns(columns => {
+
+                                columns.AddFor(m => m.nivel).Width(100).Visible(false);
+                                columns.AddFor(m => m.contaContabil).Format("R$ #,##0.##");
+                                columns.AddFor(m => m.descricao).Format("###.##%");
+
+                            })
+
+                            .DataSource(Model.listContaContabil)
+                        )
+
+
+
+    </div>
+
+}
+
+<script>
+
+    $(window).on('beforeunload', function () {
+        $("#loading").show();
+        $("#geral").hide();
+    });
+
+
+    $(document).ready(function () {
+        $("#loading").hide();
+        $("#geral").show();
+    });
+
+
+</script>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_a8f702_carrefour" Class="ContabilidadeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SQL8001.site4now.net;Initial Catalog=db_a8f702_carrefour;User ID=db_a8f702_carrefour_admin" SettingsObjectName="Dao.Properties.Settings" SettingsPropertyName="db_a8f702_carrefourConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CTB_VISAO_CONTABIL" Member="CTB_VISAO_CONTABILs">
+    <Type Name="CTB_VISAO_CONTABIL">
+      <Column Name="VISAO_CONTABIL" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="CLASSIFICACAO" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCR_CONTA" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="NIVEL_CONTA" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NIVEL1" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="NIVEL2" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NIVEL3" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NIVEL4" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NIVEL5" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTB_LANCAMENTO_ITEM" Member="CTB_LANCAMENTO_ITEMs">
+    <Type Name="CTB_LANCAMENTO_ITEM">
+      <Column Name="CONTA_CONTABIL" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DEBITO" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="CREDITO" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DATA_LANCAMENTO" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HISTORICO" Type="System.String" DbType="VarChar(250) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTB_BALANCETE" Member="CTB_BALANCETEs">
+    <Type Name="CTB_BALANCETE">
+      <Column Name="VISAO_CONTABIL" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="CLASSIFICACAO" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCR_CONTA" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="NIVEL_CONTA" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NIVEL1" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="NIVEL2" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NIVEL3" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NIVEL4" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NIVEL5" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SALDO" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="DEBITO" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="CREDITO" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="SALDO_FINAL" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.PROC_GERA_BALANCETE" Method="PROC_GERA_BALANCETE">
+    <Parameter Name="DATA_INICIAL" Parameter="dATA_INICIAL" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="DATA_FINAL" Parameter="dATA_FINAL" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="MOSTRA_SEM_MOVIMENTO" Parameter="mOSTRA_SEM_MOVIMENTO" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

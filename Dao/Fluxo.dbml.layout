@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Fluxo">
+  <DataContextMoniker Name="/FluxoDataContext" />
+  <nestedChildShapes>
+    <classShape Id="3fc1aab7-b687-4260-abe8-d2c296d44fc4" isExpanded="false" absoluteBounds="0.75, 1.25, 2, 0.45">
+      <DataClassMoniker Name="/FluxoDataContext/CTB_FLUXO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="41164ef2-683f-4e01-9e38-d1fb85abd898" absoluteBounds="0.76499999999999968, 1.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

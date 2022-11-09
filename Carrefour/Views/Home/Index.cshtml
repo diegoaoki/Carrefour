@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+
+    dialog {
+        border: none !important;
+        overflow:hidden !important;
+        width:378px !important;
+    }
+
+
+    element {
+        width: 360px;
+    }
+    </style>
+
+@if (Request.IsAuthenticated)
+{
+
+    <p style="text-align:center">
+        <span style="font-size:26px">
+            <span style="font-family:Comic Sans MS,cursive">
+                <img src="~/Images/reports.png" />
+            </span>
+        </span>
+    </p>
+
+}
+else
+{
+
+    <dialog>
+        <div class="element">
+            @Html.Action("_LoginPartial", "Account")
+
+        </div>
+    </dialog>
+    <p style="text-align:center">
+        <span style="font-size:26px">
+            <span style="font-family:Comic Sans MS,cursive">
+                <img src="~/Images/reports.png" />
+            </span>
+        </span>
+    </p>
+
+}
+
+<script>
+
+    document.querySelector("dialog").showModal();
+
+</script>

@@ -1,0 +1,234 @@
+﻿@model Carrefour.Models.FaturamentoModels
+
+@{
+    ViewBag.Title = "ConsultaFaturamento";
+}
+
+<h2>Consulta Faturamento ONLINE</h2>
+
+
+
+
+
+@if (Request.IsAuthenticated)
+{
+
+
+
+    <div id="loading">
+        <center><img src="~/images/PadraoSistema/aguarde.gif" /></center>
+    </div>
+
+
+    <div id="geral">
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+
+
+                    @(Html.DevExtreme().Chart()
+                                    .ID("chart_1")
+                                    .Palette(VizPalette.HarmonyLight)
+                                    .Title("Diário")
+                                    .ArgumentAxis(a => a
+                                        .Label(l => l
+                                            .OverlappingBehavior(OverlappingBehavior.Stagger)
+                                        )
+                                    )
+                                    .Tooltip(t => t
+                                        .Enabled(true)
+                                        .Format(Format.Currency)
+                                        .Shared(true)
+                                        .CustomizeTooltip(
+                                            @<text>
+                                                function(info) {
+
+                                                    return {
+
+
+
+                                                        html: "<div><div class='tooltip-header'><b>" +
+                                                        info.argumentText + "</b></div>" +
+                                                        "<div class='tooltip-body'><div class='series-name'>" +
+                                                        "<span class='top-series-name'>" + info.points[0].seriesName + "</span>" +
+                                                        ": </div><div class='value-text'>" +
+                                                        "<span class='top-series-value'>  R" + info.points[0].valueText + "</span>" +
+                                                        "</div><div class='series-name'>" +
+
+                                                        " </div></div></div>"
+                                                    };
+                                                }
+                                            </text>
+                                        )
+                                    )
+                                    .ValueAxis(a => {
+                                        a.Add()
+                                            .Name("frequency")
+                                            .Position(Position.Left)
+                                            .TickInterval(300);
+                                        a.Add()
+                                            .Name("percentage")
+                                            .Position(Position.Right)
+                                            .ShowZero(true)
+                                            .Label(l => l
+                                            .CustomizeText(
+                                                @<text>
+                                                    function(info) {
+                                                        return info.valueText + "%";
+                                                    }
+                                                </text>)
+                                            )
+                                            .ConstantLines(c => {
+                                                c.Add()
+                                                    .Value(80)
+                                                    .Color("#fc3535")
+                                                    .DashStyle(DashStyle.Dash)
+                                                    .Width(2)
+                                                    .Label(l => l.Visible(false));
+                                            })
+                                            .TickInterval(20)
+                                            .ValueMarginsEnabled(false);
+                                    })
+                                    .CommonSeriesSettings(s => s
+                                        .ArgumentField("grupoProduto")
+                                    )
+                                    .Series(s => {
+                                        s.Add()
+                                        .Type(SeriesType.Bar)
+                                        .Name("Faturamento")
+                                        .ValueField("valor");
+                                    })
+
+
+                                    .Legend(l => l
+                                        .VerticalAlignment(VerticalEdge.Top)
+                                        .HorizontalAlignment(HorizontalAlignment.Center)
+                                    )
+                                    .DataSource(Model.faturamentoDiario)
+                                )
+
+
+                </div>
+                <div class="col-sm">
+
+
+
+
+                    @(Html.DevExtreme().Chart()
+                                    .ID("chart_Mensal")
+                                    .Palette(VizPalette.HarmonyLight)
+                                    .Title("Mensal")
+                                    .ArgumentAxis(a => a
+                                        .Label(l => l
+                                            .OverlappingBehavior(OverlappingBehavior.Stagger)
+                                        )
+                                    )
+                                    .Tooltip(t => t
+                                        .Enabled(true)
+                                        .Format(Format.Currency)
+                                        .Shared(true)
+                                        .CustomizeTooltip(
+                                            @<text>
+                                                function(info) {
+
+                                                    return {
+
+
+
+                                                        html: "<div><div class='tooltip-header'><b>" +
+                                                        info.argumentText + "</b></div>" +
+                                                        "<div class='tooltip-body'><div class='series-name'>" +
+                                                        "<span class='top-series-name'>" + info.points[0].seriesName + "</span>" +
+                                                        ": </div><div class='value-text'>" +
+                                                        "<span class='top-series-value'>  R" + info.points[0].valueText + "</span>" +
+                                                        "</div><div class='series-name'>" +
+
+                                                        " </div></div></div>"
+                                                    };
+                                                }
+                                            </text>
+                                        )
+                                    )
+                                    .ValueAxis(a => {
+                                        a.Add()
+                                            .Name("frequency")
+                                            .Position(Position.Left)
+                                            .TickInterval(300);
+                                        a.Add()
+                                            .Name("percentage")
+                                            .Position(Position.Right)
+                                            .ShowZero(true)
+                                            .Label(l => l
+                                            .CustomizeText(
+                                                @<text>
+                                                    function(info) {
+                                                        return info.valueText + "%";
+                                                    }
+                                                </text>)
+                                            )
+                                            .ConstantLines(c => {
+                                                c.Add()
+                                                    .Value(80)
+                                                    .Color("#fc3535")
+                                                    .DashStyle(DashStyle.Dash)
+                                                    .Width(2)
+                                                    .Label(l => l.Visible(false));
+                                            })
+                                            .TickInterval(20)
+                                            .ValueMarginsEnabled(false);
+                                    })
+                                    .CommonSeriesSettings(s => s
+                                        .ArgumentField("grupoProduto")
+                                    )
+                                    .Series(s => {
+                                        s.Add()
+                                        .Type(SeriesType.Bar)
+                                        .Name("Faturamento")
+                                        .ValueField("valor");
+                                    })
+
+
+                                    .Legend(l => l
+                                        .VerticalAlignment(VerticalEdge.Top)
+                                        .HorizontalAlignment(HorizontalAlignment.Center)
+                                    )
+                                    .DataSource(Model.faturamentoMensal)
+                                )
+
+                </div>
+
+
+
+            </div>
+
+            <br />
+            <center>
+                <h3>Faturamento atualizado de 5 em 5 minutos.</h3>
+            </center>
+        </div>
+
+
+
+    </div>
+
+}
+
+<script>
+
+    $(window).on('beforeunload', function () {
+        $("#loading").show();
+        $("#geral").hide();
+    });
+
+
+    $(document).ready(function () {
+        $("#loading").hide();
+        $("#geral").show();
+    });
+
+    
+
+
+</script>
