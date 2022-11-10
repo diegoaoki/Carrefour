@@ -1,7 +1,111 @@
-﻿
+﻿@model Carrefour.Models.FluxoModels
+
 @{
     ViewBag.Title = "ConsultaFluxo";
 }
 
 <h2>Consulta Fluxo</h2>
 
+
+@if (Request.IsAuthenticated)
+{
+
+
+
+    <div id="loading">
+        <center><img src="~/images/PadraoSistema/aguarde.gif" /></center>
+    </div>
+
+    <div id="consulta">
+
+
+        @using (Html.BeginForm("ConsultaFluxo", "Fluxo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <div class="row">
+                <div class="col-auto">
+                    @Html.LabelFor(model => model.dataInicial, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.dataInicial, new { htmlAttributes = new { @type = "date", @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.dataInicial, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-auto">
+                    @Html.LabelFor(model => model.dataFinal, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.dataFinal, new { htmlAttributes = new { @type = "date", @class = "form-control datepicker" } })
+                    @Html.ValidationMessageFor(model => model.dataFinal, "", new { @class = "text-danger" })
+                </div>
+
+                
+                <div class="col-auto">
+                    <button type="submit" value="save" class="btn btn-primary">Consultar</button>
+                </div>
+
+            </div>
+        }
+    </div>
+
+
+    <div id="geral">
+
+        @if (Model.listItem.Count > 0)
+        {
+
+
+
+        @(Html.DevExtreme().DataGrid<Carrefour.Models.FluxoItem>()
+                                    .ID("gridContaContabil")
+                                    .Export(e => e.Enabled(true))
+
+                                     .HeaderFilter(headerFilter => headerFilter.Visible(true))
+
+                                     .FilterRow(filterRow => filterRow
+                                                    .Visible(true)
+                                                    .ApplyFilter(GridApplyFilterMode.Auto)
+                                                )
+
+
+                                        .SearchPanel(searchPanel => searchPanel
+                                                .Visible(true)
+                                                .Width(240)
+                                                .Placeholder("Procurar...")
+                                            )
+                                    .Columns(columns =>
+                                    {
+
+                                        columns.AddFor(m => m.id).Width(100).Visible(false);
+
+                                        columns.AddFor(m => m.dataLancamneto);
+                                        columns.AddFor(m => m.descricao);
+
+                                        columns.AddFor(m => m.debito).Format("R$ #,##0.##");
+                                        columns.AddFor(m => m.credito).Format("R$ #,##0.##");
+                                        columns.AddFor(m => m.saldo).Format("R$ #,##0.##");
+
+                                    })
+
+                                    .DataSource(Model.listItem)
+                        )
+
+
+        }
+    </div>
+
+}
+
+<script>
+
+    $(window).on('beforeunload', function () {
+        $("#loading").show();
+        $("#geral").hide();
+        $("#consulta").hide();
+    });
+
+
+    $(document).ready(function () {
+        $("#loading").hide();
+        $("#geral").show();
+        $("#consulta").show();
+    });
+
+
+</script>

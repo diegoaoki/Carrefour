@@ -30,7 +30,7 @@ namespace Fluxo
 
 
             DataTable retorno = new DataTable();
-            retorno.Columns.Add("DATA_LANCAMENTO");
+            retorno.Columns.Add("DATA_LANCAMENTO", typeof(DateTime));
             retorno.Columns.Add("DESCRICAO");
             retorno.Columns.Add("DEBITO", typeof(Decimal));
             retorno.Columns.Add("CREDITO", typeof(Decimal));

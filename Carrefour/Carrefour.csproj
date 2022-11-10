@@ -2839,10 +2839,10 @@
     <Content Include="Views\Faturamento\ConsultaFaturamento.cshtml" />
     <Content Include="Views\ContasContabeis\ConsultaVisaoContabil.cshtml" />
     <Content Include="Views\ContasContabeis\ConsultaBalancete.cshtml" />
+    <Content Include="Views\Fluxo\ConsultaFluxo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Fluxo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
